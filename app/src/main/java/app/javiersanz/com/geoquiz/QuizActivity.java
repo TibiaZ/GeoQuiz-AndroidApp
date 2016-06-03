@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +16,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
+    private ImageButton mNextButton;
+    private ImageButton mPrevButton;
 
     private TextView mQuestionTextView;
 
@@ -65,7 +67,8 @@ public class QuizActivity extends AppCompatActivity {
 
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mPrevButton = (ImageButton) findViewById(R.id.prev_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         // Listeners for the buttons
@@ -87,13 +90,31 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex == 0) ? mQuestionBank.length-1 : mCurrentIndex -1;
+                updateQuestion();
+            }
+        });
+
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                updateQuestion();;
+                updateQuestion();
+            }
+        });
+
+        mQuestionTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                mCurrentIndex=(mCurrentIndex-1)%mQuestionBank.length;
+                if(mCurrentIndex<0){
+                    mCurrentIndex=(mCurrentIndex+5)%mQuestionBank.length;
+                }
+                updateQuestion();
             }
         });
 
         updateQuestion();
-
 
     }
 
