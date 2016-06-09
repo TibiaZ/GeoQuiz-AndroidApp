@@ -24,4 +24,5 @@
 
     <!--Text Views-->
     <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="api_level_view"></string>
 </resources>

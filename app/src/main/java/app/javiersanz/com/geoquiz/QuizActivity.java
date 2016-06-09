@@ -20,7 +20,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mCheatButton;
-    private ImageButton mNextButton;
+    private Button mNextButton;
     private TextView mQuestionTextView;
     private int mCurrentIndex = 0;
     private static final String TAG = "QuizActivity";
@@ -76,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
         mCheatButton = (Button) findViewById(R.id.cheat_button);
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mNextButton = (Button) findViewById(R.id.next_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         // Listeners for the buttons
